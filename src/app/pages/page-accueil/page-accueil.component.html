@@ -1,0 +1,17 @@
+
+<button (click)="getData()">Fetch</button>
+
+<main class="container-xl pt-2">
+    <h1>{{ title }}</h1>
+    <p>
+        Made with HTML 5 and vanilla JavaScript, with the help of 
+        <a href="https://getbootstrap.com/docs/5.0/getting-started/introduction/" target="_blank">
+            Bootstrap 5
+        </a>.
+    </p>
+    <h2>List of countries</h2>
+    <ul id="countriesList" *ngIf="">
+        <li *ngFor="let country of "></li>
+    </ul>
+    <p>Source: <a href="https://restcountries.com/" target="_blank">REST Countries</a>.</p>
+</main>
