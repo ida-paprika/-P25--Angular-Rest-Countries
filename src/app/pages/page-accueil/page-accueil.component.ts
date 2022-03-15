@@ -8,11 +8,12 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PageAccueilComponent implements OnInit {
   public title = "European region countries";
-  private countries:any = [];
+  public countries:any = [];
 
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
+    this.getData();
   }
 
   getData() {
@@ -21,7 +22,6 @@ export class PageAccueilComponent implements OnInit {
       this.countries = res;
       console.log(this.countries);
     })
-
   }
 
 }
