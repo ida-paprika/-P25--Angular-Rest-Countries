@@ -7,7 +7,6 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./page-accueil.component.css']
 })
 export class PageAccueilComponent implements OnInit {
-  public title = "European region countries";
   public countries:any = [];
 
   constructor(private http: HttpClient) { }

@@ -7,7 +7,6 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./page-table.component.css']
 })
 export class PageTableComponent implements OnInit {
-  public title = "HTML table presentation";
   public countries!: any;
 
   constructor(private http: HttpClient) { }
@@ -17,11 +16,17 @@ export class PageTableComponent implements OnInit {
   }
 
   getData() {
+    const FORMATER = new Intl.NumberFormat('en-US');
     const url = "https://restcountries.com/v3.1/region/europe?fields=name,capital,area,population,cca2";
     this.http.get(url).subscribe( (res) => {
       this.countries = res;
-      console.log(this.countries);
-    })
+      for (let country of this.countries) {
+        country.area = FORMATER.format(country.area);
+        country.population = FORMATER.format(country.population);
+        country.capital = country.capital[country.capital.length-1];
+      }
+    });
   }
+
 
 }
