@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./page-accueil.component.css']
 })
 export class PageAccueilComponent implements OnInit {
-  public countries:any = [];
+  public countries: any = [];
 
   constructor(private http: HttpClient) { }
 
@@ -17,9 +17,8 @@ export class PageAccueilComponent implements OnInit {
 
   getData() {
     const url = "https://restcountries.com/v3.1/region/europe?fields=name";
-    this.http.get(url).subscribe((res)=>{
+    this.http.get(url).subscribe((res) => {
       this.countries = res;
-      console.log(this.countries);
     })
   }
 

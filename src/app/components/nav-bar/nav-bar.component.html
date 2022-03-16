@@ -1,33 +1,47 @@
 <header class="sticky-top">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+
         <div class="container-xl">
-            <a href="" class="navbar-brand" aria-current="page">Eu</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
-            data-bs-target="#navbarContent" aria-controls="navbarContent"
-             aria-expanded="false" aria-label="Toggle navigation">
+
+            <a class="navbar-brand" aria-current="page" routerLink="" routerLinkActive="active">Eu</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+
                 <span class="navbar-toggler-icon"></span>
+
             </button>
+
             <div class="collapse navbar-collapse" id="navbarContent">
+
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
+
                     <li class="nav-item">
-                        <a class="nav-link" href="" routerLink="/table">Table</a>
+                        <a class="nav-link" routerLink="/table" routerLinkActive="active">Table</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="" routerLink="/cards">Cards</a>
+                        <a class="nav-link" routerLink="/cards" routerLinkActive="active">Cards</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Geolocation</a>
+                        <a class="nav-link" routerLink="/geolocation" routerLinkActive="active">Geolocation</a>
                     </li>
+
                 </ul>
+
                 <ul class="navbar-nav ms-auto mb-2 mb-md-0">
+
                     <li class="nav-item">
-                        <a class="nav-link" href="">Sign up</a>
+                        <a class="nav-link" routerLinkActive="active">Sign up</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Sign in</a>
+                        <a class="nav-link" routerLinkActive="active">Sign in</a>
                     </li>
+
                 </ul>
+
             </div>
+
         </div>
+
     </nav>
-  </header>
+</header>

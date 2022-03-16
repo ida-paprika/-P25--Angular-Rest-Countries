@@ -15,13 +15,10 @@ export class PageCardsComponent implements OnInit {
     this.getData();
   }
 
-  getData() {
+  private getData() {
     const url = "https://restcountries.com/v3.1/region/europe?fields=name,capital,flags,maps,cca2";
-    this.http.get(url).subscribe( (res) => {
+    this.http.get(url).subscribe((res) => {
       this.countries = res;
-      for (let country of this.countries) {
-        country.capital = country.capital[country.capital.length-1];
-      }
     });
   }
 

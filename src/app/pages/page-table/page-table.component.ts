@@ -15,16 +15,10 @@ export class PageTableComponent implements OnInit {
     this.getData();
   }
 
-  getData() {
-    const FORMATER = new Intl.NumberFormat('en-US');
+  private getData() {
     const url = "https://restcountries.com/v3.1/region/europe?fields=name,capital,area,population,cca2";
-    this.http.get(url).subscribe( (res) => {
+    this.http.get(url).subscribe((res) => {
       this.countries = res;
-      for (let country of this.countries) {
-        country.area = FORMATER.format(country.area);
-        country.population = FORMATER.format(country.population);
-        country.capital = country.capital[country.capital.length-1];
-      }
     });
   }
 

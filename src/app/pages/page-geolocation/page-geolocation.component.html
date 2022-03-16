@@ -1,0 +1,21 @@
+<h1 class="mb-3">Geolocation</h1>
+
+<form [formGroup]="selectForm">
+
+    <label for="selectCountry" class="form-label">Select a country :</label>
+
+    <select formControlName="selectCountry" (change)="onChange($event)" id="selectCountry" class="form-select"
+        aria-label="Select a country">
+
+        <option *ngFor="let country of countriesList" [value]="country.cca2">{{
+            country.name.official }}</option>
+
+    </select>
+
+    <div id="selectCountryHelp" class="form-text">Once selected, map will be refresh and centered on the capital.</div>
+
+</form>
+
+<div id="mapFrame" class="mt-4" *ngIf="center">
+    <google-map height="500px" width="100%" [zoom]="zoom" [center]="center" [options]="options"></google-map>
+</div>

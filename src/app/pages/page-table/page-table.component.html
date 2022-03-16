@@ -1,4 +1,3 @@
-
 <h1 class="mb-3">HTML table presentation</h1>
 <div class="table-responsive">
     <table class="table table-bordered table-hover">
@@ -13,9 +12,9 @@
         <tbody id="countriesTable" class="border-top-0 text-nowrap" *ngIf="countries">
             <tr *ngFor="let country of countries">
                 <th scope="row">{{ country.name.official }}</th>
-                <td class="text-end">{{ country.area }}</td>
-                <td class="text-end">{{ country.population }}</td>
-                <td><a href="">{{ country.capital }}</a></td>
+                <td class="text-end">{{ country.area | numberFormatter }}</td>
+                <td class="text-end">{{ country.population | numberFormatter }}</td>
+                <td><a href="">{{ country.capital[0] }}</a></td>
             </tr>
         </tbody>
         <caption class="text-secondary border-top-0">List of european region countries</caption>
