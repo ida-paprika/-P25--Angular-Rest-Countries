@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-page-geolocation',
@@ -8,14 +9,16 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./page-geolocation.component.css']
 })
 export class PageGeolocationComponent implements OnInit {
+
+  public isocode!: any;
   public selectForm: FormGroup;
   public countriesList!: any;
   public zoom = 10;
   public center!: google.maps.LatLngLiteral;
   public options: google.maps.MapOptions = {
-    mapTypeId: 'hybrid',
-    zoomControl: false,
-    scrollwheel: false,
+    mapTypeId: 'roadmap',
+    zoomControl: true,
+    scrollwheel: true,
     disableDoubleClickZoom: true,
     maxZoom: 15,
     minZoom: 8,
@@ -25,6 +28,7 @@ export class PageGeolocationComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private formBuilder: FormBuilder,
+    private _Activatedroute: ActivatedRoute
   ) {
     this.selectForm = this.formBuilder.group({
       selectCountry: ['FR']
@@ -32,12 +36,24 @@ export class PageGeolocationComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this._Activatedroute.snapshot.paramMap.get('isocode')) {
+      this.isocode = this._Activatedroute.snapshot.paramMap.get('isocode');
+    }
+    else {
+      this.isocode = 'FR';
+    }
+
+    // this._Activatedroute.paramMap.subscribe(params => {
+    //   this.isocode = params.get('isocode');
+    // });
+
     this.getCountries();
-    this.displayMap('fr');
+    console.log(this.isocode);
+    this.displayMap(this.isocode);
   }
 
   private getCountries(): void {
-    const url = "https://restcountries.com/v3.1/region/europe?fields=name,cca2";
+    const url = "http://localhost:8080/countries/select";
     this.http.get(url).subscribe((res) => {
       this.countriesList = res;
     });
@@ -48,11 +64,12 @@ export class PageGeolocationComponent implements OnInit {
   }
 
   private displayMap(cca2: string): void {
-    const url = "https://restcountries.com/v3.1/alpha/" + cca2 + "?fields=capitalInfo";
+    const url = "http://localhost:8080/countries/" + cca2 + "/map";
     this.http.get(url).subscribe((res: any) => {
+      console.log(res[0].capitalLat);
       this.center = {
-        lat: res.capitalInfo.latlng[0],
-        lng: res.capitalInfo.latlng[1],
+        lat: res[0].capitalLat,
+        lng: res[0].capitalLng,
       }
     });
   }

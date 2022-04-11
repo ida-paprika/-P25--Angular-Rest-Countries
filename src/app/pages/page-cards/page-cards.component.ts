@@ -16,7 +16,7 @@ export class PageCardsComponent implements OnInit {
   }
 
   private getData() {
-    const url = "https://restcountries.com/v3.1/region/europe?fields=name,capital,flags,maps,cca2";
+    const url = "http://localhost:8080/countries/cards";
     this.http.get(url).subscribe((res) => {
       this.countries = res;
     });

@@ -11,10 +11,10 @@
         </thead>
         <tbody id="countriesTable" class="border-top-0 text-nowrap" *ngIf="countries">
             <tr *ngFor="let country of countries">
-                <th scope="row">{{ country.name.official }}</th>
+                <th scope="row">{{ country.name }}</th>
                 <td class="text-end">{{ country.area | numberFormatter }}</td>
                 <td class="text-end">{{ country.population | numberFormatter }}</td>
-                <td><a href="">{{ country.capital[0] }}</a></td>
+                <td><a [routerLink]="['/countries/geolocation', country.isocode]">{{ country.capital }}</a></td>
             </tr>
         </tbody>
         <caption class="text-secondary border-top-0">List of european region countries</caption>

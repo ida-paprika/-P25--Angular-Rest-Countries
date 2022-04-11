@@ -7,10 +7,12 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { PageTableComponent } from './pages/page-table/page-table.component';
 
 const routes: Routes = [
-  { path: '', component: PageAccueilComponent },
-  { path: 'table', component: PageTableComponent },
-  { path: 'cards', component: PageCardsComponent },
-  { path: 'geolocation', component: PageGeolocationComponent },
+  { path: 'countries', component: PageAccueilComponent },
+  { path: 'countries/table', component: PageTableComponent },
+  { path: 'countries/cards', component: PageCardsComponent },
+  { path: 'countries/geolocation', component: PageGeolocationComponent },
+  { path: 'countries/geolocation/:isocode', component: PageGeolocationComponent },
+  { path: '', redirectTo: 'countries', pathMatch: 'full' },
   {
     path: '**', pathMatch: 'full',
     component: PageNotFoundComponent

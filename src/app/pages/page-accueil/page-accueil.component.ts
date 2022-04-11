@@ -16,7 +16,8 @@ export class PageAccueilComponent implements OnInit {
   }
 
   getData() {
-    const url = "https://restcountries.com/v3.1/region/europe?fields=name";
+    // const url = "https://restcountries.com/v3.1/region/europe?fields=name";
+    const url = "http://localhost:8080/countries";
     this.http.get(url).subscribe((res) => {
       this.countries = res;
     })

@@ -5,10 +5,11 @@
     <label for="selectCountry" class="form-label">Select a country :</label>
 
     <select formControlName="selectCountry" (change)="onChange($event)" id="selectCountry" class="form-select"
-        aria-label="Select a country">
+        aria-label="Select a country" [value]="isocode">
 
-        <option *ngFor="let country of countriesList" [value]="country.cca2">{{
-            country.name.official }}</option>
+        <option *ngFor="let country of countriesList" [value]="country.isocode">
+            {{ country.name }}
+        </option>
 
     </select>
 

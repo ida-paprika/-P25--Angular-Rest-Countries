@@ -1,13 +1,13 @@
 <div class="col">
     <div class="card h-100">
 
-        <a [href]="country.maps.openStreetMaps" title="Open Street Maps" target="_blank">
-            <img [src]="country.flags.png" class="card-img-top" [alt]="'flag of ' + country.name.official">
+        <a [href]="country.mapUrl" title="Open Street Maps" target="_blank">
+            <img [src]="country.flag" class="card-img-top" [alt]="'flag of ' + country.name">
         </a>
 
         <div class="card-body">
-            <h5 class="card-title">{{ country.name.official }}</h5>
-            <a class="card-text" href="">{{ country.capital[0] }}</a>
+            <h5 class="card-title">{{ country.name }}</h5>
+            <a class="card-text" [routerLink]="['/countries/geolocation', country.isocode]">{{ country.capital }}</a>
         </div>
 
     </div>
